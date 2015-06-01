@@ -1,0 +1,47 @@
+<!-- La view serv -->
+<section data-ng-controller="ServsController" data-ng-init="findOne()">
+
+ <div data-ng-show="!authentication.user" class="ajuste row">
+    <div class="col-xs-12	col-sm-6 col-md-6 col-lg-3" Style="margin-top:10px;">
+    <a href="/signin" class="btn btn-primary">Identificarse</a>
+	</div>
+  </div>
+  
+ <div data-ng-show="authentication.user" class="row">
+  <div class="col-xs-12col-sm-6 col-md-6 col-lg-4" style="margin-left:20px;">
+  		<div class="panel panel-info" style="margin-top:5px;">
+		<div class="panel-heading">
+    <h1 data-ng-bind="serv.tipo" class="panel-title"></h1>
+	</div></div>
+    <!-- Mostrar los botones de edición para serv creado -->
+   
+    <small class="list-group-item">
+        <em>Publicado el</em>
+        <em data-ng-bind="serv.creado | date:'mediumDate'"></em>
+        <em>Por</em>
+        <em data-ng-bind="serv.creador.fullName"></em>
+    </small>
+	
+    <p data-ng-bind="serv.especializacion" class="list-group-item"></p>
+	<p data-ng-bind="serv.ubicacion" class="list-group-item"></p>
+	<p data-ng-bind="serv.precio" class="list-group-item"></p>
+	<p data-ng-bind="serv.descripcion" class="list-group-item"></p>
+	<p data-ng-bind="serv.imagen1" class="list-group-item"></p>
+	<p data-ng-bind="serv.imagen2" class="list-group-item"></p>
+	<p data-ng-bind="serv.imagen3" class="list-group-item"></p>
+	<p data-ng-bind="serv.imagen4" class="list-group-item"></p>
+	<p data-ng-bind="serv.imagen5" class="list-group-item"></p>
+	<p data-ng-bind="serv.estado" class="list-group-item"></p>
+	<p data-ng-bind="serv.nombre" class="list-group-item"></p>
+	<p data-ng-bind="serv.apellido" class="list-group-item"></p>
+	<p data-ng-bind="serv.cedula" class="list-group-item"></p>
+	
+	 <!--Botones-->
+	 <div>
+	    <a href="/#!/servs/{{serv._id}}/edit" class="btn btn-primary">editar</a>
+        <a href="#" data-ng-click="delete();" class="btn btn-danger">borrar</a>
+		<a href="/#!/gestor" class="btn btn-primary"> volver </a>
+    </div>
+</div>
+</div>	
+</section>

@@ -1,0 +1,111 @@
+<!-- La view listar artículos -->
+<section data-ng-controller="AutosController" data-ng-init="find()">
+
+ <div data-ng-show="!authentication.user" class="ajuste row">
+    <div class="col-xs-12	col-sm-6 col-md-6 col-lg-3" Style="margin-top:10px;">
+    <a href="/signin" class="btn btn-primary">Identificarse</a>
+	</div>
+  </div>
+  
+ <div data-ng-show="authentication.user" class="row">
+ <div class="col-xs-12col-sm-6 col-md-6 col-lg-4" style="margin-left:20px;">
+	<h1>Automóviles</h1>
+	<ul class="list-group">
+		<!-- La lista de auto -->
+		<li data-ng-repeat="auto in autos" class="list-group-item">
+		<div class="panel panel-primary">
+		<div class="panel-heading">
+			<a data-ng-href="#!/autos/{{auto._id}}" data-ng-bind="auto.tipo" class="panel-title"></a>
+		</div></div>	
+			
+			<div class="list-group-item">
+			<small data-ng-bind="auto.creado | date:'medium'"></small>
+		
+			<small>/</small>
+			<small data-ng-bind="auto.creador.fullName"></small> </div>
+			<br>
+		<div class="input-group">
+				<span class="input-group-addon" id="apellido" for="apellido">Apellido</span><p data-ng-bind="auto.apellido" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="nombre" for="nombre">Nombre</span><p data-ng-bind="auto.nombre" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="cedula" for="cedula">Cedula</span><p data-ng-bind="auto.cedula" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="marca for="marca">Marca</span><p data-ng-bind="auto.marca" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="modelo for="modelo">Modelo</span><p data-ng-bind="auto.modelo" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="ano for="ano">Año</span><p data-ng-bind="auto.ano" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="transmision" for="transmision">Transmision</span><p data-ng-bind="auto.transmision" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="ubicacion" for="ubicacion">Ubicacion</span><p data-ng-bind="auto.ubicacion" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="precio" for="precio">Precio</span><p data-ng-bind="auto.precio" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="aireacnd" for="aireacnd">Aire acondicionado</span><p data-ng-bind="auto.aireacnd" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="vidriosyseguros" for="vidriosyseguros">Vidrios y seguros</span><p data-ng-bind="auto.vidriosyseguros" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="alarma" for="alarma">Alarma</span><p data-ng-bind="auto.alarma" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="sonido" for="sonido">Sonido</span><p data-ng-bind="auto.sonido" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="descripcion" for="descripcion">Descripcion</span><p data-ng-bind="auto.descripcion" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="imagen1" for="imagen1">imagen1</span><img src="{{auto.imagen1}}" class="img-responsive" alt="Responsive image" width="200px">
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="imagen2" for="imagen2">imagen2</span><img src="{{auto.imagen2}}" class="img-responsive" alt="Responsive image" width="200px">
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="imagen3" for="imagen3">imagen3</span><img src="{{auto.imagen3}}" class="img-responsive" alt="Responsive image" width="200px">
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="imagen4" for="imagen4">imagen4</span><img src="{{auto.imagen4}}" class="img-responsive" alt="Responsive image" width="200px">
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="imagen5" for="imagen5">imagen5</span><img src="{{auto.imagen5}}" class="img-responsive" alt="Responsive image" width="200px">
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="estado" for="estado">estado</span><p data-ng-bind="auto.estado" class="list-group-item"></p>
+		</div>
+		
+		
+		<br>
+			<!-- Mostrar los botones de edición para auto creado -->
+			<br>
+    <p data-ng-show="authentication.user">
+        <a href="/#!/autos/{{auto._id}}/edit" class="btn btn-primary">editar</a>
+        <a href="/#!/autos/{{auto._id}}" data-ng-click="delete();" class="btn btn-danger">borrar</a>
+		<a href="/#!/gestor" class="btn btn-primary"> volver </a>
+    </p>
+		</li>
+		
+	</ul>
+
+	<!-- Si no hay artículos en la lista, sugire al usuario que cree un nuevo artículo -->
+	<div data-ng-hide="!autos || autos.length" class= "list-group">
+		<p class="list-group-item list-group-item-info"> <a href="/#!/autos/create"> Aún no hay artículos, ¿por qué no creas el primero?</a></p>
+		<br>
+		<div class="btn-group-vertical">
+		<a href="/#!/gestor" class="btn btn-primary"> volver </a>
+		</div>
+	</div>
+</div>	
+</div>	
+</section>

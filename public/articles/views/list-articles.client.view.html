@@ -1,0 +1,42 @@
+<!-- La view listar artículos -->
+<section data-ng-controller="ArticlesController" data-ng-init="find()">
+ <div data-ng-show="authentication.user" class="row">
+ <div class="col-xs-12col-sm-6 col-md-6 col-lg-4" style="margin-left:20px;">
+	<h1>Artículos</h1>
+	<ul class="list-group">
+		<!-- La lista de artículos -->
+		<li data-ng-repeat="article in articles" class="list-group-item">
+		<div class="panel panel-primary">
+		<div class="panel-heading">
+			<a data-ng-href="#!/articles/{{article._id}}" data-ng-bind="article.titulo" class="panel-title"></a>
+		</div></div>	
+			
+			<div class="list-group-item">
+			<small data-ng-bind="article.creado | date:'medium'"></small>
+		
+			<small>/</small>
+			<small data-ng-bind="article.creador.fullName"></small> </div>
+			<br>
+			<p data-ng-bind="article.contenido" class="list-group-item"></p>
+			<!-- Mostrar los botones de edición para artículo creado -->
+			<br>
+    <p data-ng-show="authentication.user">
+        <a href="/#!/articles/{{article._id}}/edit" class="btn btn-primary">editar</a>
+        <a href="/#!/articles/{{article._id}}" data-ng-click="delete();" class="btn btn-danger">borrar</a>
+		<a href="/#!/gestor" class="btn btn-primary"> volver </a>
+    </p>
+		</li>
+		
+	</ul>
+
+	<!-- Si no hay artículos en la lista, sugire al usuario que cree un nuevo artículo -->
+	<div data-ng-hide="!articles || articles.length" class= "list-group">
+		<p class="list-group-item list-group-item-info"> <a href="/#!/autos/create"> Aún no hay artículos, ¿por qué no creas el primero?</a></p>
+		<br>
+		<div class="btn-group-vertical">
+		<a href="/#!/gestor" class="btn btn-primary"> volver </a>
+		</div>
+	</div>
+</div>	
+</div>	
+</section>

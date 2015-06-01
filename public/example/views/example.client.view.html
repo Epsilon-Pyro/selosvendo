@@ -1,0 +1,37 @@
+<section ng-controller="ExampleController">
+  <div data-ng-show="!authentication.user" class="ajuste row">
+    <div class="col-xs-12	col-sm-6 col-md-6 col-lg-3" Style="margin-top:10px;">
+    <a href="/signin" class="btn btn-primary">Identificarse</a>
+	</div>
+  </div>
+  <div data-ng-show="authentication.user" class="ajuste row">
+  <div class="col-xs-12	col-sm-6 col-md-6 col-lg-5">
+<div class="form-group">
+    <h2>Hola, <span data-ng-bind="authentication.user.fullName"></span></h2>
+</div>
+<br><br><br>
+    <div class="form-group">
+	<label>Crear artículo:</label>
+	<br>
+    <div class="btn-group" role="group" aria-label="...">
+      <a href="/#!/autos/create" class="btn btn-default " role="button">Automóvil</a>
+	  <a href="/#!/motos/create" class="btn btn-default " role="button">Motocicleta</a>
+	  <a href="/#!/servs/create" class="btn btn-default " role="button">Servicio</a>
+    </div>
+	<br><br>
+	 <label>Ver lista de artículos:</label>
+	<br> 
+    <div class="btn-group" role="group" aria-label="...">
+      <a href="/#!/autos" class="btn btn-default " role="button">Automoviles</a>
+	  <a href="/#!/motos" class="btn btn-default " role="button">Motocicletas</a>
+	  <a href="/#!/servs" class="btn btn-default " role="button">Servicios</a>
+    </div>
+    </div>
+	<br><br><br>
+	<div class="form-group">
+	<a href="/signup" class="btn btn-primary">Crear otra cuenta</a>
+    <a href="/signout" class="btn btn-primary">Cerrar sesión</a>
+    </div>
+
+  </div>
+</section>

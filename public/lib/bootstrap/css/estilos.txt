@@ -1,0 +1,3 @@
+.ajustes{
+margin: 5px;
+}

@@ -1,0 +1,25 @@
+<!-- La view artículo -->
+<section data-ng-controller="ArticlesController" data-ng-init="findOne()">
+ <div data-ng-show="authentication.user" class="row">
+  <div class="col-xs-12col-sm-6 col-md-6 col-lg-4" style="margin-left:20px;">
+  		<div class="panel panel-info" style="margin-top:5px;">
+		<div class="panel-heading">
+    <h1 data-ng-bind="article.titulo" class="panel-title"></h1>
+	</div></div>
+    <!-- Mostrar los botones de edición para artículo creado -->
+   
+    <small class="list-group-item">
+        <em>Publicado el</em>
+        <em data-ng-bind="article.creado | date:'mediumDate'"></em>
+        <em>Por</em>
+        <em data-ng-bind="article.creador.fullName"></em>
+    </small>
+    <p data-ng-bind="article.contenido" class="list-group-item"></p>
+	 <div>
+        <a href="/#!/articles/{{article._id}}/edit" class="btn btn-primary">editar</a>
+        <a href="#" data-ng-click="delete();" class="btn btn-danger">borrar</a>
+		<a href="/#!/gestor" class="btn btn-primary"> volver </a>
+    </div>
+</div>
+</div>	
+</section>

@@ -1,0 +1,97 @@
+<!-- La view listar motos -->
+<section data-ng-controller="MotosController" data-ng-init="find()">
+
+ <div data-ng-show="!authentication.user" class="ajuste row">
+    <div class="col-xs-12	col-sm-6 col-md-6 col-lg-3" Style="margin-top:10px;">
+    <a href="/signin" class="btn btn-primary">Identificarse</a>
+	</div>
+  </div>
+  
+ <div data-ng-show="authentication.user" class="row">
+ <div class="col-xs-12col-sm-6 col-md-6 col-lg-4" style="margin-left:20px;">
+	<h1>Motocicletas</h1>
+	<ul class="list-group">
+		<!-- La lista de moto -->
+		<li data-ng-repeat="moto in motos" class="list-group-item">
+		<div class="panel panel-primary">
+		<div class="panel-heading">
+			<a data-ng-href="#!/motos/{{moto._id}}" data-ng-bind="moto.tipo" class="panel-title"></a>
+		</div></div>	
+			
+			<div class="list-group-item">
+			<small data-ng-bind="moto.creado | date:'medium'"></small>
+		
+			<small>/</small>
+			<small data-ng-bind="moto.creador.fullName"></small> </div>
+			<br>
+		<div class="input-group">
+				<span class="input-group-addon" id="apellido" for="apellido">Apellido</span><p data-ng-bind="moto.apellido" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="nombre" for="nombre">Nombre</span><p data-ng-bind="moto.nombre" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="cedula" for="cedula">Cedula</span><p data-ng-bind="moto.cedula" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="marca for="marca">Marca</span><p data-ng-bind="moto.marca" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="cilindrada for="cilindrada">Cilindrada</span><p data-ng-bind="moto.cilindrada" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="ano for="ano">Año</span><p data-ng-bind="moto.ano" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="ubicacion" for="ubicacion">Ubicacion</span><p data-ng-bind="moto.ubicacion" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="precio" for="precio">Precio</span><p data-ng-bind="moto.precio" class="list-group-item"></p>
+		</div>
+		
+		<div class="input-group">
+				<span class="input-group-addon" id="descripcion" for="descripcion">Descripcion</span><p data-ng-bind="moto.descripcion" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="imagen1" for="imagen1">imagen1</span><img src="{{moto.imagen1}}" class="img-responsive" alt="Responsive image" width="200px">
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="imagen2" for="imagen2">imagen2</span><img src="{{moto.imagen2}}" class="img-responsive" alt="Responsive image" width="200px">
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="imagen3" for="imagen3">imagen3</span><img src="{{moto.imagen3}}" class="img-responsive" alt="Responsive image" width="200px">
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="imagen4" for="imagen4">imagen4</span><img src="{{moto.imagen4}}" class="img-responsive" alt="Responsive image" width="200px">
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="imagen5" for="imagen5">imagen5</span><img src="{{moto.imagen5}}" class="img-responsive" alt="Responsive image" width="200px">
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="estado" for="estado">estado</span><p data-ng-bind="moto.estado" class="list-group-item"></p>
+		</div>
+		
+		
+		<br>
+			<!-- Mostrar los botones de edición para moto creado -->
+			<br>
+    <p data-ng-show="authentication.user">
+        <a href="/#!/motos/{{moto._id}}/edit" class="btn btn-primary">editar</a>
+        <a href="/#!/motos/{{moto._id}}" data-ng-click="delete();" class="btn btn-danger">borrar</a>
+		<a href="/#!/gestor" class="btn btn-primary"> volver </a>
+    </p>
+		</li>
+		
+	</ul>
+
+	<!-- Si no hay artículos en la lista, sugire al usuario que cree un nuevo artículo -->
+	<div data-ng-hide="!motos || motos.length" class= "list-group">
+		<p class="list-group-item list-group-item-info"> <a href="/#!/motos/create"> Aún no hay motocicletas, ¿por qué no creas la primera?</a></p>
+		<br>
+		<div class="btn-group-vertical">
+		<a href="/#!/gestor" class="btn btn-primary"> volver </a>
+		</div>
+	</div>
+</div>	
+</div>	
+</section>

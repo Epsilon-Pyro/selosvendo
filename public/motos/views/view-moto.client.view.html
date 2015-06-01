@@ -1,0 +1,49 @@
+<!-- La view moto -->
+<section data-ng-controller="MotosController" data-ng-init="findOne()">
+
+ <div data-ng-show="!authentication.user" class="ajuste row">
+    <div class="col-xs-12	col-sm-6 col-md-6 col-lg-3" Style="margin-top:10px;">
+    <a href="/signin" class="btn btn-primary">Identificarse</a>
+	</div>
+  </div>
+  
+ <div data-ng-show="authentication.user" class="row">
+  <div class="col-xs-12col-sm-6 col-md-6 col-lg-4" style="margin-left:20px;">
+  		<div class="panel panel-info" style="margin-top:5px;">
+		<div class="panel-heading">
+    <h1 data-ng-bind="moto.tipo" class="panel-title"></h1>
+	</div></div>
+    <!-- Mostrar los botones de edición para moto creado -->
+   
+    <small class="list-group-item">
+        <em>Publicado el</em>
+        <em data-ng-bind="moto.creado | date:'mediumDate'"></em>
+        <em>Por</em>
+        <em data-ng-bind="moto.creador.fullName"></em>
+    </small>
+	
+    <p data-ng-bind="moto.marca" class="list-group-item"></p>
+	<p data-ng-bind="moto.cilindrada" class="list-group-item"></p>
+	<p data-ng-bind="moto.ano" class="list-group-item"></p>
+	<p data-ng-bind="moto.ubicacion" class="list-group-item"></p>
+	<p data-ng-bind="moto.precio" class="list-group-item"></p>
+	<p data-ng-bind="moto.descripcion" class="list-group-item"></p>
+	<p data-ng-bind="moto.imagen1" class="list-group-item"></p>
+	<p data-ng-bind="moto.imagen2" class="list-group-item"></p>
+	<p data-ng-bind="moto.imagen3" class="list-group-item"></p>
+	<p data-ng-bind="moto.imagen4" class="list-group-item"></p>
+	<p data-ng-bind="moto.imagen5" class="list-group-item"></p>
+	<p data-ng-bind="moto.estado" class="list-group-item"></p>
+	<p data-ng-bind="moto.nombre" class="list-group-item"></p>
+	<p data-ng-bind="moto.apellido" class="list-group-item"></p>
+	<p data-ng-bind="moto.cedula" class="list-group-item"></p>
+	
+	 <!--Botones-->
+	 <div>
+	    <a href="/#!/motos/{{moto._id}}/edit" class="btn btn-primary">editar</a>
+        <a href="#" data-ng-click="delete();" class="btn btn-danger">borrar</a>
+		<a href="/#!/gestor" class="btn btn-primary"> volver </a>
+    </div>
+</div>
+</div>	
+</section>

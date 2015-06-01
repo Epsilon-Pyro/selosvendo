@@ -1,0 +1,54 @@
+<!-- La view auto -->
+<section data-ng-controller="AutosController" data-ng-init="findOne()">
+
+ <div data-ng-show="!authentication.user" class="ajuste row">
+    <div class="col-xs-12	col-sm-6 col-md-6 col-lg-3" Style="margin-top:10px;">
+    <a href="/signin" class="btn btn-primary">Identificarse</a>
+	</div>
+  </div>
+  
+ <div data-ng-show="authentication.user" class="row">
+  <div class="col-xs-12col-sm-6 col-md-6 col-lg-4" style="margin-left:20px;">
+  		<div class="panel panel-info" style="margin-top:5px;">
+		<div class="panel-heading">
+    <h1 data-ng-bind="auto.tipo" class="panel-title"></h1>
+	</div></div>
+    <!-- Mostrar los botones de edición para auto creado -->
+   
+    <small class="list-group-item">
+        <em>Publicado el</em>
+        <em data-ng-bind="auto.creado | date:'mediumDate'"></em>
+        <em>Por</em>
+        <em data-ng-bind="auto.creador.fullName"></em>
+    </small>
+	
+    <p data-ng-bind="auto.marca" class="list-group-item"></p>
+	<p data-ng-bind="auto.modelo" class="list-group-item"></p>
+	<p data-ng-bind="auto.ano" class="list-group-item"></p>
+	<p data-ng-bind="auto.transmision" class="list-group-item"></p>
+	<p data-ng-bind="auto.ubicacion" class="list-group-item"></p>
+	<p data-ng-bind="auto.precio" class="list-group-item"></p>
+	<p data-ng-bind="auto.aireacnd" class="list-group-item"></p>
+	<p data-ng-bind="auto.vidriosyseguros" class="list-group-item"></p>
+	<p data-ng-bind="auto.alarma" class="list-group-item"></p>
+	<p data-ng-bind="auto.sonido" class="list-group-item"></p>
+	<p data-ng-bind="auto.descripcion" class="list-group-item"></p>
+	<p data-ng-bind="auto.imagen1" class="list-group-item"></p>
+	<p data-ng-bind="auto.imagen2" class="list-group-item"></p>
+	<p data-ng-bind="auto.imagen3" class="list-group-item"></p>
+	<p data-ng-bind="auto.imagen4" class="list-group-item"></p>
+	<p data-ng-bind="auto.imagen5" class="list-group-item"></p>
+	<p data-ng-bind="auto.estado" class="list-group-item"></p>
+	<p data-ng-bind="auto.nombre" class="list-group-item"></p>
+	<p data-ng-bind="auto.apellido" class="list-group-item"></p>
+	<p data-ng-bind="auto.cedula" class="list-group-item"></p>
+	
+	 <!--Botones-->
+	 <div>
+	    <a href="/#!/autos/{{auto._id}}/edit" class="btn btn-primary">editar</a>
+        <a href="#" data-ng-click="delete();" class="btn btn-danger">borrar</a>
+		<a href="/#!/gestor" class="btn btn-primary"> volver </a>
+    </div>
+</div>
+</div>	
+</section>

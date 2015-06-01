@@ -1,0 +1,92 @@
+<!-- La view listar motos -->
+<section data-ng-controller="ServsController" data-ng-init="find()">
+
+ <div data-ng-show="!authentication.user" class="ajuste row">
+    <div class="col-xs-12	col-sm-6 col-md-6 col-lg-3" Style="margin-top:10px;">
+    <a href="/signin" class="btn btn-primary">Identificarse</a>
+	</div>
+  </div>
+  
+ <div data-ng-show="authentication.user" class="row">
+ <div class="col-xs-12col-sm-6 col-md-6 col-lg-4" style="margin-left:20px;">
+	<h1>Servicios</h1>
+	<ul class="list-group">
+		<!-- La lista de serv -->
+		<li data-ng-repeat="serv in servs" class="list-group-item">
+		<div class="panel panel-primary">
+		<div class="panel-heading">
+			<a data-ng-href="#!/servs/{{serv._id}}" data-ng-bind="serv.tipo" class="panel-title"></a>
+		</div></div>	
+			
+			<div class="list-group-item">
+			<small data-ng-bind="serv.creado | date:'medium'"></small>
+		
+			<small>/</small>
+			<small data-ng-bind="serv.creador.fullName"></small> </div>
+			<br>
+		<div class="input-group">
+				<span class="input-group-addon" id="apellido" for="apellido">Apellido</span><p data-ng-bind="serv.apellido" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="nombre" for="nombre">Nombre</span><p data-ng-bind="serv.nombre" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="cedula" for="cedula">Cedula</span><p data-ng-bind="serv.cedula" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="especializacion for="especializacion">Especializacion</span><p data-ng-bind="serv.especializacion" class="list-group-item"></p>
+		</div>
+		
+		<div class="input-group">
+				<span class="input-group-addon" id="ubicacion" for="ubicacion">Ubicacion</span><p data-ng-bind="serv.ubicacion" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="precio" for="precio">Precio</span><p data-ng-bind="serv.precio" class="list-group-item"></p>
+		</div>
+		
+		<div class="input-group">
+				<span class="input-group-addon" id="descripcion" for="descripcion">Descripcion</span><p data-ng-bind="serv.descripcion" class="list-group-item"></p>
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="imagen1" for="imagen1">imagen1</span><img src="{{serv.imagen1}}" class="img-responsive" alt="Responsive image" width="200px">
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="imagen2" for="imagen2">imagen2</span><img src="{{serv.imagen2}}" class="img-responsive" alt="Responsive image" width="200px">
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="imagen3" for="imagen3">imagen3</span><img src="{{serv.imagen3}}" class="img-responsive" alt="Responsive image" width="200px">
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="imagen4" for="imagen4">imagen4</span><img src="{{serv.imagen4}}" class="img-responsive" alt="Responsive image" width="200px">
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="imagen5" for="imagen5">imagen5</span><img src="{{serv.imagen5}}" class="img-responsive" alt="Responsive image" width="200px">
+		</div>
+		<div class="input-group">
+				<span class="input-group-addon" id="estado" for="estado">estado</span><p data-ng-bind="serv.estado" class="list-group-item"></p>
+		</div>
+		
+		
+		<br>
+			<!-- Mostrar los botones de edición para serv creado -->
+			<br>
+    <p data-ng-show="authentication.user">
+        <a href="/#!/servs/{{serv._id}}/edit" class="btn btn-primary">editar</a>
+        <a href="/#!/servs/{{serv._id}}" data-ng-click="delete();" class="btn btn-danger">borrar</a>
+		<a href="/#!/gestor" class="btn btn-primary"> volver </a>
+    </p>
+		</li>
+		
+	</ul>
+
+	<!-- Si no hay artículos en la lista, sugire al usuario que cree un nuevo artículo -->
+	<div data-ng-hide="!servs || servs.length" class= "list-group">
+		<p class="list-group-item list-group-item-info"> <a href="/#!/servs/create"> Aún no hay Servicios, ¿por qué no creas el primero?</a></p>
+		<br>
+		<div class="btn-group-vertical">
+		<a href="/#!/gestor" class="btn btn-primary"> volver </a>
+		</div>
+	</div>
+</div>	
+</div>	
+</section>

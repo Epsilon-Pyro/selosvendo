@@ -1,0 +1,119 @@
+<!-- Crear la View Articles -->
+<section data-ng-controller="AutosController">
+
+ <div data-ng-show="!authentication.user" class="ajuste row">
+    <div class="col-xs-12	col-sm-6 col-md-6 col-lg-3" Style="margin-top:10px;">
+    <a href="/signin" class="btn btn-primary">Identificarse</a>
+	</div>
+  </div>
+  
+ <div data-ng-show="authentication.user" class="ajuste row">
+ <div class="col-xs-12col-sm-6 col-md-6 col-lg-3" style="margin-left:20px;">
+ <div class="form-group">
+	<h1>Nuevo Automóvil</h1>
+	</div
+	>
+	<!-- El formulario nuevo auto -->
+	
+	<form data-ng-submit="create()" novalidate>
+		<div class="form-group">
+		<div class="input-group">
+				<span class="input-group-addon" id="tipo" for="tipo">Tipo</span><input type="text" class="form-control" data-ng-model="tipo" id="tipo" placeholder="Introduzca tipo" required onKeyUp="return limitar(event,this.value,12)" onKeyDown="return limitar(event,this.value,12)" title="Tipo de vehículo">
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="marca" for="marca">Marca</span><input type="text" class="form-control" data-ng-model="marca" id="marca" placeholder="Introduzca marca" required onKeyUp="return limitar(event,this.value,16)" onKeyDown="return limitar(event,this.value,16)" >
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="modelo" for="modelo">Modelo</span><input type="text" class="form-control" data-ng-model="modelo" id="modelo" placeholder="Introduzca modelo" required onKeyUp="return limitar(event,this.value,16)" onKeyDown="return limitar(event,this.value,16)" >
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="ano" for="ano">Año</span><input type="number" class="form-control" data-ng-model="ano" id="ano" placeholder="Introduzca ano" required onKeyUp="return limitar(event,this.value,4)" onKeyDown="return limitar(event,this.value,4)" min="1910" max="2020">
+			</div>
+				<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="transmision" for="transmision">Transmisión</span><input type="string" class="form-control" data-ng-model="transmision" id="transmision" placeholder="Introduzca transmision" required onKeyUp="return limitar(event,this.value,12)" onKeyDown="return limitar(event,this.value,12)" >
+			</div>
+				<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="ubicacion" for="ubicacion">Ubicación</span><input type="string" class="form-control" data-ng-model="ubicacion" id="ubicacion" placeholder="Introduzca ubicacion" required onKeyUp="return limitar(event,this.value,40)" onKeyDown="return limitar(event,this.value,40)" >
+			</div>
+				<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="precio" for="precio">Precio</span><input type="number" class="form-control" data-ng-model="precio" id="precio" placeholder="Introduzca precio" required onKeyUp="return limitar(event,this.value,7)" onKeyDown="return limitar(event,this.value,7)" min="100" max="1000000">
+			</div>
+				<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="aireacnd" for="aireacnd">Aire acondicionado</span><input type="string" class="form-control" data-ng-model="aireacnd" id="aireacnd" placeholder="Introduzca aire acondicionado" required onKeyUp="return limitar(event,this.value,12)" onKeyDown="return limitar(event,this.value,12)">
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="vidriosyseguros" for="vidriosyseguros">Vidrios y seguros</span><input type="string" class="form-control" data-ng-model="vidriosyseguros" id="vidriosyseguros" placeholder="Introduzca vidrios y seguros" required onKeyUp="return limitar(event,this.value,12)" onKeyDown="return limitar(event,this.value,12)">
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="alarma" for="alarma">Alarma</span><input type="string" class="form-control" data-ng-model="alarma" id="alarma" placeholder="Introduzca alarma" required onKeyUp="return limitar(event,this.value,12)" onKeyDown="return limitar(event,this.value,12)">
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="sonido" for="sonido">Sonido</span><input type="string" class="form-control" data-ng-model="sonido" id="sonido" placeholder="Introduzca sonido" required onKeyUp="return limitar(event,this.value,12)" onKeyDown="return limitar(event,this.value,12)">
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="descripcion" for="descripcion">Descripcion</span><textarea rows="4" type="string" class="form-control" data-ng-model="descripcion" id="descripcion" placeholder="Introduzca descripcion" required onKeyUp="return limitar(event,this.value,160)" onKeyDown="return limitar(event,this.value,160)"></textarea>
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="imagen1" for="imagen1">imagen1</span><input type="url" class="form-control" data-ng-model="imagen1" id="imagen1" placeholder="Introduzca url de imagen1" required onKeyUp="return limitar(event,this.value,200)" onKeyDown="return limitar(event,this.value,200)">
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="imagen2" for="imagen2">imagen2</span><input type="url" class="form-control" data-ng-model="imagen2" id="imagen2" placeholder="Introduzca url de imagen2"  onKeyUp="return limitar(event,this.value,200)" onKeyDown="return limitar(event,this.value,200)">
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="imagen3" for="imagen3">imagen3</span><input type="url" class="form-control" data-ng-model="imagen3" id="imagen3" placeholder="Introduzca url de imagen3"  onKeyUp="return limitar(event,this.value,200)" onKeyDown="return limitar(event,this.value,200)">
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="imagen4" for="imagen4">imagen4</span><input type="url" class="form-control" data-ng-model="imagen4" id="imagen4" placeholder="Introduzca url de imagen4"  onKeyUp="return limitar(event,this.value,200)" onKeyDown="return limitar(event,this.value,200)">
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="imagen5" for="imagen5">imagen5</span><input type="url" class="form-control" data-ng-model="imagen5" id="imagen5" placeholder="Introduzca url de imagen5" onKeyUp="return limitar(event,this.value,200)" onKeyDown="return limitar(event,this.value,200)">
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="estado" for="estado">estado</span><input type="string" class="form-control" data-ng-model="estado" id="estado" placeholder="Introduzca estado" required onKeyUp="return limitar(event,this.value,12)" onKeyDown="return limitar(event,this.value,12)">
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="nombre" for="nombre">Nombre</span><input type="string" class="form-control" data-ng-model="nombre" id="nombre" placeholder="Introduzca nombre" required onKeyUp="return limitar(event,this.value,16)" onKeyDown="return limitar(event,this.value,16)">
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="apellido" for="apellido">Apellido</span><input type="string" class="form-control" data-ng-model="apellido" id="apellido" placeholder="Introduzca apellido" required onKeyUp="return limitar(event,this.value,16)" onKeyDown="return limitar(event,this.value,16)">
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" id="cedula" for="cedula">Cédula</span><input type="number" class="form-control" data-ng-model="cedula" id="cedula" placeholder="Introduzca cedula" required onKeyUp="return limitar(event,this.value,16)" onKeyDown="return limitar(event,this.value,16)">
+			</div>
+			<br>
+		
+	<!--Botones de control-->
+		<div class="form-group">
+			<input type="submit" class="btn btn-primary">
+			<a href="/#!/gestor" class="btn btn-primary"> volver </a>
+		</div>
+		
+		<!-- El elemento mensaje de error -->
+		<div data-ng-show="error">
+			<strong data-ng-bind="error"></strong>
+		</div>
+	</form>
+</div>	
+</div>	
+</div>
+</section>
